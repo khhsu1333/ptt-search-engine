@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        body {
+            background: #f1f1f1;
+        }
+
+        .search_block {
+            margin-top: 3rem;
+        }
+
+        .search_block input {
+            width: 35rem !important;
+        }
+
+        .card {
+            margin-top: 2rem;
+            background: #fff;
+            cursor: pointer
+        }
+
+        .card:hover {
+            -webkit-box-shadow: 1px 1px 15px 0px #0275d8;
+            -moz-box-shadow: 1px 1px 15px 0px #0275d8;
+            box-shadow: 1px 1px 15px 0px #0275d8;
+        }
+
+    </style>
+
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8 text-center search_block">
+                    <form class="form-inline" action="/search" method="get">
+                        <input name="q" type="text" class="form-control" placeholder="輸入一些內容吧..." value="{{ query }}">
+                        <button class="btn btn-primary">搜尋</button>
+                    </form>
+                </div>
+
+                <div class="col-md-offset-2 col-md-8">
+                {% if err %}
+                    <div class="col-md-12" style="margin-top: 3rem;">
+                        <div class="alert alert-danger">
+                            {{ err }}
+                        </div>
+                    </div>
+                {% else %}
+                    {% if info %}
+                        <div class="col-md-12" style="margin-top: 3rem;">
+                            <div class="alert alert-warning">
+                                {{ info }}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% for a in articles %}
+
+                        <div class="card" data-url="{{ a[0] }}">
+                            <div class="card-block">
+                                <h4 class="card-title"> {{ a[1] }} </h4>
+                                <p class="card-text">
+                                    <span class="label label-pill label-info" style="font-size: 1rem;">
+                                        分數: {{ a[2] }}
+                                    </span>
+                                    <br>
+                                    <button class="cache btn btn-success-outline btn-sm"
+                                            style="float: right" data-url="{{ a[3] }}">
+                                        網頁庫存
+                                    </button>
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <script src="{{ static_url('js/home.js') }}"></script>
+{% endblock %}

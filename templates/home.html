@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <style>
+        body {
+            background: url('/static/img/bg.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+
+            color: #fff;
+        }
+
+        .vcenter {
+            margin-top: 3rem;
+            padding-top: 8rem;
+        }
+
+        .vcenter h1 {
+            font-weight: 900;
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px #000000;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8 text-center vcenter">
+                    <h1>PTT Search Engine</h1>
+                    <br>
+                    <form action="/search" method="get">
+                        <input name="q" type="text" class="form-control" placeholder="輸入一些內容吧...">
+                        <br>
+                        <button class="btn btn-primary">搜尋</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

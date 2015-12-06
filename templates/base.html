@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="KH Hsu">
+
+        <meta property="og:title" content="PTT Search Engine - Best PTT Search Engine Ever">
+        <meta property="og:image" content="">
+        <meta property="og:description" content="">
+        <meta property="og:site_name" content="PTT Search Engine">
+        <meta property="og:url" content="">
+        <meta property="og:type" content="website">
+
+        <title>PTT Search Engine - Best PTT Search Engine Ever</title>
+
+        <link rel="stylesheet" type="text/css" href="{{ static_url('css/vendor/bootstrap.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ static_url('css/vendor/font-awesome.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ static_url('css/base.css') }}">
+
+        {% block css %}
+        {% endblock %}
+    </head>
+
+    <body>
+        {% block navbar %}
+            <nav class="navbar navbar-dark bg-inverse">
+                <div class="container">
+                    <a class="navbar-brand" href="/">PTT Search Engine</a>
+
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="nav-item {% if page == 'home' %} active {% endif %}">
+                          <a class="nav-link" href="/">首頁</a>
+                        </li>
+                        <li class="nav-item {% if page == 'search' %} active {% endif %}">
+                          <a class="nav-link" href="/search">搜尋</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/">聯絡資訊</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+        {% block footer %}
+            <div class="container" id="footer">
+                Copyright &copy; 2015 Kuo Hsuan Hsu All rights reserved
+            </div>
+        {% endblock %}
+
+        <script src="{{ static_url('js/vendor/jquery-2.1.4.min.js') }}"></script>
+        <script src="{{ static_url('js/vendor/bootstrap.min.js') }}"></script>
+
+        {% block js %}
+        {% endblock %}
+    </body>
+</html>
