@@ -58,7 +58,10 @@
 
                         <div class="card" data-url="{{ a[0] }}">
                             <div class="card-block">
-                                <h4 class="card-title"> {{ a[1] }} </h4>
+                                <h4 class="card-title">
+                                    {{ a[1] }}
+                                    <span class="label label-pill label-danger"> {{ a[4] }} </span>
+                                </h4>
                                 <p class="card-text">
                                     <span class="label label-pill label-info" style="font-size: 1rem;">
                                         分數: {{ a[2] }}

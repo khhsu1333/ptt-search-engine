@@ -72,15 +72,16 @@ class SearchPage(BaseHandler):
                                 sim += query_vec[word] * count
 
                             sim = sim / (query_len * length)
-                            ranked_result.append([url, title, sim, cache.replace('data', '/article')])
+                            ranked_result.append([url, title, sim, cache.replace('data', '/article'), score])
 
                         # sort by similarity
-                        ranked_result = sorted(ranked_result, key=lambda k: k[2])
+                        ranked_result = sorted(ranked_result, key=lambda k: k[2], reverse=True)
                 except Exception as error:
                     print(error)
                     err = '伺服器發生錯誤'
         else:
             info = '無搜尋結果'
 
-        params = dict(page="search", articles=ranked_result, query=query, err=err, info=info)
+        result_len = 50 if len(ranked_result) > 50 else len(ranked_result)
+        params = dict(page="search", articles=ranked_result[:result_len], query=query, err=err, info=info)
         self.render("search.html", **params)
